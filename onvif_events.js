@@ -140,10 +140,12 @@
                             // SOURCE (Name:Value)
                             if (camMessage.message.message.source && camMessage.message.message.source.simpleItem) {
                                 if (Array.isArray(camMessage.message.message.source.simpleItem)) {
-                                    // TODO : currently we only process the first event source item ...
-                                    outputMsg.source = {
-                                        name:  camMessage.message.message.source.simpleItem[0].$.Name,
-                                        value: camMessage.message.message.source.simpleItem[0].$.Value
+                                    outputMsg.source = [];
+                                    for (var x  = 0; x < camMessage.message.message.source.simpleItem.length; x++) {
+                                        outputMsg.source.push({
+                                            name:  camMessage.message.message.source.simpleItem[x].$.Name,
+                                            value: camMessage.message.message.source.simpleItem[x].$.Value
+                                        })
                                     }
                                 }
                                 else {
